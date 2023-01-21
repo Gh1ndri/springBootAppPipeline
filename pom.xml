@@ -63,6 +63,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>jarFile</finalName>
     </build>
     <repositories>
         <repository>
