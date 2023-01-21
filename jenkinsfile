@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build_image') {
             steps {
-                echo "terst trest"
+                echo "terst trest 222"
             }
         }
     }
