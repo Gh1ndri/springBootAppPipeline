@@ -3,16 +3,25 @@ pipeline {
     environment{
     		IMAGE_NAME = "gh1ndri/spring_image"
     		IMAGE_TAG = "spring-app"
-    		}
+    }
+
     stages {
-        stage('Build_image_docker') {
-        agent { dockerfile true }
-            steps {
-                echo 'build begin'
-                sh 'docker login -u $USER -p $PASSWORD'
+        stage ('build docker image'){
+            steps{
                 sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
-                sh 'docker push $IMAGE_NAME:$IMAGE_TAG'
             }
+        }
+
+        stage ('login to docker'){
+             steps{
+                  sh 'docker login -u $USER -p $PASSWORD'
+             }
+        }
+
+        stage ('push image'){
+             steps{
+                  sh 'docker push $IMAGE_NAME:$IMAGE_TAG'
+             }
         }
     }
 }
