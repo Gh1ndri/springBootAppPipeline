@@ -1,9 +1,17 @@
 pipeline {
     agent any
+    environment{
+    		IMAGE_NAME = "gh1ndri/spring_image"
+    		IMAGE_TAG = "spring-app"
+    		}
     stages {
-        stage('Build_image') {
+        stage('Build_image_docker') {
+        agent { dockerfile true }
             steps {
-                echo "terst trest 6"
+                echo 'build begin'
+                sh 'docker login -u $USER -p $PASSWORD'
+                sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
+                sh 'docker push $IMAGE_NAME:$IMAGE_TAG'
             }
         }
     }
