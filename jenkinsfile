@@ -10,7 +10,7 @@ pipeline {
         stage ('build docker image'){
             steps{
                 echo 'start building'
-                sh 'docker build -t app.jar .'
+                sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
             }
         }
 
