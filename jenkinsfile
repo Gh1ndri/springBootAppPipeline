@@ -3,7 +3,6 @@ pipeline {
 
     environment{
     		IMAGE_NAME = "gh1ndri/spring_image"
-    		IMAGE_TAG = ${GIT_COMMIT}
     }
 
     stages {
