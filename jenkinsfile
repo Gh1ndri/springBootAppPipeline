@@ -10,7 +10,7 @@ pipeline {
         stage ('build docker image'){
             steps{
                 echo 'start building'
-                sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
+                sh 'docker build -t $IMAGE_NAME:$GIT_COMMIT .'
             }
         }
 
@@ -22,7 +22,7 @@ pipeline {
 
         stage ('push image'){
              steps{
-                  sh 'docker push $IMAGE_NAME:$IMAGE_TAG'
+                  sh 'docker push $IMAGE_NAME:$GIT_COMMIT'
              }
         }
     }
