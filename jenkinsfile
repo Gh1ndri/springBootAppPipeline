@@ -9,7 +9,7 @@ pipeline {
         stage ('build docker image'){
             steps{
                 echo 'start building'
-                sh 'docker build -t $IMAGE_NAME:$GIT_COMMIT .'
+                sh 'docker build -t $IMAGE_NAME:$GIT_COMMIT -t $IMAGE_NAME:latest .'
             }
         }
 
@@ -28,7 +28,7 @@ pipeline {
         stage ('run using docker compose'){
             steps{
                 echo 'start building docker compose'
-                sh 'docker compose up . -d'
+                sh 'docker compose up -d'
             }
         }
     }

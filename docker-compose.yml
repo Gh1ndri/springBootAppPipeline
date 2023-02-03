@@ -1,14 +1,14 @@
-version: 3.8
+version: "3.8"
 services:
   SpringBoot:
-      image: gh1ndri/spring_image
+      image: gh1ndri/spring_image:latest
       ports:
         - "8090:8090"
       depends_on:
         PostgreSQL:
           condition: service_healthy
       environment:
-        - SPRING_DATASOURCE_URL=jdbc:postgresql://PostgreSQL:5432/boutique
+        - SPRING_DATASOURCE_URL=jdbc:postgresql://PostgreSQL:5432/postgres
         - SPRING_DATASOURCE_USERNAME=postgres
         - SPRING_DATASOURCE_PASSWORD=password
         - SPRING_JPA_HIBERNATE_DDL_AUTO=update
