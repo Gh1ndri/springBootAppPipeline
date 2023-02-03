@@ -19,10 +19,17 @@ pipeline {
              }
         }
 
-        stage ('push image'){
+        stage ('push 3 image'){
              steps{
                   sh 'docker push $IMAGE_NAME:$GIT_COMMIT'
              }
+        }
+
+        stage ('run using docker compose'){
+            steps{
+                echo 'start building docker compose'
+                sh 'docker compose up . -d'
+            }
         }
     }
 }
